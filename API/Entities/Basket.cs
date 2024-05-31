@@ -15,7 +15,7 @@ namespace API.Entities
 
             var existingItem = Items.FirstOrDefault(item => item.ProductId == product.Id);
 
-            if (existingItem != null) existingItem.Quantity += existingItem.Quantity + quantity;
+            if (existingItem != null) existingItem.Quantity += quantity;
         }
 
         public void RemoveItem(int productId, int quantity) 
