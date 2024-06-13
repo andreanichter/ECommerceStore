@@ -76,7 +76,7 @@ const Basket = {
 const agent = {
   Catalog,
   TestErrors,
-  Basket
+  Basket,
 };
 
 export default agent;
