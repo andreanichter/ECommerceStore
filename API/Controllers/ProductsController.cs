@@ -16,12 +16,18 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts(string orderBy, string searchTerm)
+        public async Task<ActionResult<List<Product>>> GetProducts(
+            string orderBy,
+            string searchTerm,
+            string brands,
+            string types
+        )
         {
-            var query = _context.Products
-            .Sort(orderBy)
-            .Search(searchTerm)
-            .AsQueryable();
+            var query = _context
+                .Products.Sort(orderBy)
+                .Search(searchTerm)
+                .Filter(brands, types)
+                .AsQueryable();
 
             return await query.ToListAsync();
         }
@@ -29,9 +35,10 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var product =  await _context.Products.FindAsync(id);
+            var product = await _context.Products.FindAsync(id);
 
-            if (product == null) return NotFound();
+            if (product == null)
+                return NotFound();
 
             return product;
         }
