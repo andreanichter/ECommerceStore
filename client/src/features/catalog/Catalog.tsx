@@ -21,7 +21,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { CheckBox } from "@mui/icons-material";
 
 const sortOptions = [
   { value: "name", label: "Alphabetical" },
@@ -99,10 +98,13 @@ export default function Catalog() {
       <Grid item xs={3} />
       <Grid item xs={9}>
         <Box display="flex" justifyContent="space-between" alignItems="center">
-          <Typography>
-            Displaying 1-6 of 20 items
-          </Typography>
-          <Pagination color="secondary" size="large" count={10} page={2}></Pagination>
+          <Typography>Displaying 1-6 of 20 items</Typography>
+          <Pagination
+            color="secondary"
+            size="large"
+            count={10}
+            page={2}
+          ></Pagination>
         </Box>
       </Grid>
     </Grid>
