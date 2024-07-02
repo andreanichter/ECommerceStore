@@ -10,9 +10,6 @@ import {
 } from "./catalogSlice";
 import {
   Box,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
   Grid,
   Pagination,
   Paper,
