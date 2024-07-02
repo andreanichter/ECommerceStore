@@ -34,11 +34,7 @@ function getAxiosParams(productParams: ProductParams) {
   return params;
 }
 
-export const fetchProductsAsync = createAsyncThunk<
-  Product[],
-  void,
-  { state: RootState }
->("catalog/fetchProductsAsync", async (_, thunkAPI) => {
+export const fetchProductsAsync = createAsyncThunk<Product[],void,{ state: RootState }>("catalog/fetchProductsAsync", async (_, thunkAPI) => {
   const params = getAxiosParams(thunkAPI.getState().catalog.productParams);
   try {
     return await agent.Catalog.list(params);
@@ -79,7 +75,7 @@ function initParams() {
 
 export const catalogSlice = createSlice({
   name: "catalog",
-  initialState: productsAdapter.getInitialState({
+  initialState: productsAdapter.getInitialState<CatalogState>({
     productsLoaded: false,
     filtersLoaded: false,
     status: "idle",
