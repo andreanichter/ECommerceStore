@@ -1,6 +1,7 @@
 using API.Data;
 using API.Entities;
 using API.Middleware;
+using API.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,8 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<StoreContext>(opt =>
@@ -40,6 +39,7 @@ builder.Services
     .AddEntityFrameworkStores<StoreContext>();
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
+builder.Services.AddScoped<TokenService>();
 
 var app = builder.Build();
 
