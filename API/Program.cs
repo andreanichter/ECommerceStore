@@ -32,7 +32,10 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services
-    .AddIdentityCore<User>()
+    .AddIdentityCore<User>(opt => 
+    {
+        opt.User.RequireUniqueEmail = true;
+    })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>();
 builder.Services.AddAuthentication();
