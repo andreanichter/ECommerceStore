@@ -20,19 +20,19 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Order>>> GetOrders()
+        public async Task<ActionResult<List<OrderDto>>> GetOrders()
         {
             return await _context
-                .Orders.Include(o => o.OrderItems)
+                .Orders.ProjectOrderToOrderDto()
                 .Where(o => o.BuyerId == User.Identity.Name)
                 .ToListAsync();
         }
 
         [HttpGet("{id}", Name = "GetOrder")]
-        public async Task<ActionResult<Order>> GetOrder(int id)
+        public async Task<ActionResult<OrderDto>> GetOrder(int id)
         {
             return await _context
-                .Orders.Include(o => o.OrderItems)
+                .Orders.ProjectOrderToOrderDto()
                 .Where(o => o.BuyerId == User.Identity.Name && o.Id == id)
                 .FirstOrDefaultAsync();
         }
@@ -106,7 +106,8 @@ namespace API.Controllers
 
             var result = await _context.SaveChangesAsync() > 0;
 
-            if (result) return CreatedAtRoute("GetOrder", new {id = order.Id}, order.Id);
+            if (result)
+                return CreatedAtRoute("GetOrder", new { id = order.Id }, order.Id);
 
             return BadRequest("Problem creating order");
         }
