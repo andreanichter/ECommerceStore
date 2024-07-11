@@ -15,7 +15,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" mt={1}>
       {"Copyright © "}
-      <Link href="https://mui.com/">Sitemark&nbsp;</Link>
+      <Link href="/">React Realm&nbsp;</Link>
       {new Date().getFullYear()}
     </Typography>
   );
@@ -23,181 +23,199 @@ function Copyright() {
 
 export default function Footer() {
   return (
-    <Container
+    <Box
+      component="footer"
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: { xs: 4, sm: 8 },
+        backgroundColor: "primary.main",
+        color: "primary.contrastText",
         py: { xs: 8, sm: 10 },
-        textAlign: { sm: "center", md: "left" },
+        mt: {xs: 8, sm: 12}
       }}
     >
-      <Box
+      <Container
         sx={{
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          width: "100%",
-          justifyContent: "space-between",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: { xs: 4, sm: 8 },
+          textAlign: { sm: "center", md: "left" },
         }}
       >
         <Box
           sx={{
             display: "flex",
-            flexDirection: "column",
-            gap: 4,
-            minWidth: { xs: "100%", sm: "60%" },
+            flexDirection: { xs: "column", sm: "row" },
+            width: "100%",
+            justifyContent: "space-between",
           }}
         >
-          <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
-            <Typography variant="body2" fontWeight={600} gutterBottom>
-              Newsletter
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 4,
+              minWidth: { xs: "100%", sm: "60%" },
+            }}
+          >
+            <Box sx={{ width: { xs: "100%", sm: "60%" } }}>
+              <Typography variant="body2" fontWeight={600} gutterBottom>
+                Newsletter
+              </Typography>
+              <Typography variant="body2" mb={2}>
+                Subscribe to our newsletter for weekly updates and promotions.
+              </Typography>
+              <Stack direction="row" spacing={1} useFlexGap>
+                <TextField
+                  id="outlined-basic"
+                  hiddenLabel
+                  size="small"
+                  variant="outlined"
+                  fullWidth
+                  aria-label="Enter your email address"
+                  placeholder="Your email address"
+                  inputProps={{
+                    autoComplete: "off",
+                    "aria-label": "Enter your email address",
+                  }}
+                  sx={{
+                    backgroundColor: "background.paper",
+                    borderRadius: "4px",
+                  }}
+                />
+                <Button
+                  variant="contained"
+                  sx={{
+                    flexShrink: 0,
+                    backgroundColor: "secondary.main",
+                    "&:hover": {
+                      backgroundColor: "secondary.dark",
+                    },
+                  }}
+                >
+                  Subscribe
+                </Button>
+              </Stack>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" fontWeight={600}>
+              Products
             </Typography>
-            <Typography variant="body2" color="text.secondary" mb={2}>
-              Subscribe to our newsletter for weekly updates and promotions.
+            <Link href="#" color="inherit">
+              Features
+            </Link>
+            <Link href="#" color="inherit">
+              Testimonials
+            </Link>
+            <Link href="#" color="inherit">
+              FAQ
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" fontWeight={600}>
+              Company
             </Typography>
-            <Stack direction="row" spacing={1} useFlexGap>
-              <TextField
-                id="outlined-basic"
-                hiddenLabel
-                size="small"
-                variant="outlined"
-                fullWidth
-                aria-label="Enter your email address"
-                placeholder="Your email address"
-                inputProps={{
-                  autoComplete: "off",
-                  "aria-label": "Enter your email address",
-                }}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ flexShrink: 0 }}
-              >
-                Subscribe
-              </Button>
-            </Stack>
+            <Link href="#" color="inherit">
+              About us
+            </Link>
+            <Link href="#" color="inherit">
+              Careers
+            </Link>
+            <Link href="#" color="inherit">
+              Press
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: "none", sm: "flex" },
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" fontWeight={600}>
+              Legal
+            </Typography>
+            <Link href="#" color="inherit">
+              Terms
+            </Link>
+            <Link href="#" color="inherit">
+              Privacy
+            </Link>
+            <Link href="#" color="inherit">
+              Contact
+            </Link>
           </Box>
         </Box>
         <Box
           sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
+            display: "flex",
+            justifyContent: "space-between",
+            pt: { xs: 4, sm: 8 },
+            width: "100%",
+            borderTop: "1px solid",
+            borderColor: "divider",
           }}
         >
-          <Typography variant="body2" fontWeight={600}>
-            Products
-          </Typography>
-          <Link color="text.secondary" href="#">
-            Features
-          </Link>
-          <Link color="text.secondary" href="#">
-            Testimonials
-          </Link>
-          <Link color="text.secondary" href="#">
-            FAQ
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Company
-          </Typography>
-          <Link color="text.secondary" href="#">
-            About us
-          </Link>
-          <Link color="text.secondary" href="#">
-            Careers
-          </Link>
-          <Link color="text.secondary" href="#">
-            Press
-          </Link>
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "none", sm: "flex" },
-            flexDirection: "column",
-            gap: 1,
-          }}
-        >
-          <Typography variant="body2" fontWeight={600}>
-            Legal
-          </Typography>
-          <Link color="text.secondary" href="#">
-            Terms
-          </Link>
-          <Link color="text.secondary" href="#">
-            Privacy
-          </Link>
-          <Link color="text.secondary" href="#">
-            Contact
-          </Link>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          pt: { xs: 4, sm: 8 },
-          width: "100%",
-          borderTop: "1px solid",
-          borderColor: "divider",
-        }}
-      >
-        <div>
-          <Link color="text.secondary" href="#">
-            Privacy Policy
-          </Link>
-          <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
-            &nbsp;•&nbsp;
-          </Typography>
-          <Link color="text.secondary" href="#">
-            Terms of Service
-          </Link>
-          <Copyright />
-        </div>
-        <Stack
-          direction="row"
-          justifyContent="left"
-          spacing={1}
-          useFlexGap
-          sx={{
-            color: "text.secondary",
-          }}
-        >
-          <IconButton
-            color="inherit"
-            href="https://github.com/mui"
-            aria-label="GitHub"
-            sx={{ alignSelf: "center" }}
+          <div>
+            <Link href="#" color="inherit">
+              Privacy Policy
+            </Link>
+            <Typography display="inline" sx={{ mx: 0.5, opacity: 0.5 }}>
+              &nbsp;•&nbsp;
+            </Typography>
+            <Link href="#" color="inherit">
+              Terms of Service
+            </Link>
+            <Copyright />
+          </div>
+          <Stack
+            direction="row"
+            justifyContent="left"
+            spacing={1}
+            useFlexGap
+            sx={{
+              color: "inherit",
+            }}
           >
-            <FacebookIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            href="https://x.com/MaterialUI"
-            aria-label="X"
-            sx={{ alignSelf: "center" }}
-          >
-            <TwitterIcon />
-          </IconButton>
-          <IconButton
-            color="inherit"
-            href="https://www.linkedin.com/company/mui/"
-            aria-label="LinkedIn"
-            sx={{ alignSelf: "center" }}
-          >
-            <LinkedInIcon />
-          </IconButton>
-        </Stack>
-      </Box>
-    </Container>
+            <IconButton
+              color="inherit"
+              href="https://github.com/mui"
+              aria-label="GitHub"
+              sx={{ alignSelf: "center" }}
+            >
+              <FacebookIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              href="https://x.com/MaterialUI"
+              aria-label="X"
+              sx={{ alignSelf: "center" }}
+            >
+              <TwitterIcon />
+            </IconButton>
+            <IconButton
+              color="inherit"
+              href="https://www.linkedin.com/company/mui/"
+              aria-label="LinkedIn"
+              sx={{ alignSelf: "center" }}
+            >
+              <LinkedInIcon />
+            </IconButton>
+          </Stack>
+        </Box>
+      </Container>
+    </Box>
   );
 }
