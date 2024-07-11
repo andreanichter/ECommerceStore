@@ -1,4 +1,5 @@
 import {
+  Box,
   Container,
   CssBaseline,
   ThemeProvider,
@@ -55,16 +56,33 @@ function App() {
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-      {loading ? (
-        <LoadingComponent message="Initializing app..." />
-      ) : location.pathname === "/" ? (
-        <HomePage />
-      ) : (
-        <Container sx={{ mt: 4 }}>
-          <Outlet />
-        </Container>
-      )}
-      <Footer/>
+      <Box
+        sx={{
+          minHeight: "calc(100vh - 64px)",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {loading ? (
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <LoadingComponent message="Initializing app..." />
+          </Box>
+        ) : location.pathname === "/" ? (
+          <HomePage />
+        ) : (
+          <Container sx={{ mt: 4 }}>
+            <Outlet />
+          </Container>
+        )}
+      </Box>
+      <Footer />
     </ThemeProvider>
   );
 }
